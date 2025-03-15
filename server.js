@@ -1,7 +1,6 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import sendFileWithFallback from "./middlewares/sendFileWithFallback.js";
 
 const app = express();
 
@@ -14,7 +13,13 @@ app.get("/", (req, res) => {
   res.redirect("/llm_inference");
 });
 
-app.get("/llm_inference", sendFileWithFallback(path.join(__dirname, "public/llm_inference", "index.html")));
+app.get("/llm_inference", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/llm_inference", "index.html"));
+});
+
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, "public", "404.html"));
+});
 
 const PORT = 3000;
 
