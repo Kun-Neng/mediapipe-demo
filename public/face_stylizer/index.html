@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Stylizer</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <h2>臉部樣式生成</h2>
+
+    <script type="module" src="/webgpu_check.js"></script>
+
+    <div class="container">
+      <label style="margin: 1rem 0;" for="portraitInput">
+        <span class="sr-only">選擇肖像：</span>
+        <input type="file" id="portraitInput" />
+      </label>
+
+      <div>
+        <img id="portraitImage" src="/assets/img/Gemini_Generated_Portrait.jfif" />
+
+        <div>
+          <label for="styleSelector">選擇樣式：</label>
+          <select id="styleSelector" style="height: 2rem;">
+            <!-- https://storage.googleapis.com/mediapipe-models/face_stylizer/blaze_face_stylizer/float32/latest/face_stylizer_oil_painting.task -->
+            <option value="/assets/face_stylizer_oil_painting.task">油畫 Oil Painting</option>
+            <!-- https://storage.googleapis.com/mediapipe-models/face_stylizer/blaze_face_stylizer/float32/latest/face_stylizer_color_ink.task -->
+            <option value="/assets/face_stylizer_color_ink.task">彩色墨水 Color Ink</option>
+            <!-- https://storage.googleapis.com/mediapipe-models/face_stylizer/blaze_face_stylizer/float32/latest/face_stylizer_color_sketch.task -->
+            <option value="/assets/face_stylizer_color_sketch.task">彩色草圖 Color Sketch</option>
+          </select>
+          <button id="changeStyle" style="margin: 4px 0;">套用</button>
+        </div>
+
+        <button id="generate" type="button">生成</button>
+
+        <canvas id="faceCanvas" style="display: block;"></canvas>
+      </div>
+    </div>
+
+    <script type="module" src="/face_stylizer/index.js"></script>
+  </body>
+</html>

@@ -12,6 +12,8 @@ h2 {
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
   margin: 10px;
 }
 
@@ -24,9 +26,18 @@ textarea {
 }
 
 button {
+  width: fit-content;
   margin: 10px 0;
   padding: 4px;
   cursor: pointer;
+}
+
+#portraitImage {
+  display: block;
+  max-width: 100%;
+  width: 256px;
+  height: 256px;
+  object-fit: contain;
 }
 
 #output {

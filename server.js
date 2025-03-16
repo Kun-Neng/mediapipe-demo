@@ -17,6 +17,10 @@ app.get("/llm_inference", (req, res) => {
   res.sendFile(path.join(__dirname, "public/llm_inference", "index.html"));
 });
 
+app.get("/face_stylizer", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/face_stylizer", "index.html"));
+});
+
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, "public", "404.html"));
 });
